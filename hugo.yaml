@@ -4,7 +4,7 @@ title: Millephilosoph
 theme: ["PaperMod"]
 
 ignoreFiles: ["/content/drafts/"]
-publishDir: "docs"
+publishDir: "public"
 
 menu:
   main:
