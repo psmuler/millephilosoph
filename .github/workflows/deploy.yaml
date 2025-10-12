@@ -1,0 +1,35 @@
+name: Deploy Hugo site
+
+on:
+  push:
+    branches:
+      - main  # build when main changes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.134.2'   # pin to a known good version
+          extended: true            # for PaperMod / SASS support
+
+      - name: Build site
+        run: hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
