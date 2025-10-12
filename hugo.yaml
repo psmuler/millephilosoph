@@ -19,6 +19,7 @@ menu:
       weight: 3
 
 params:
+  disableGoogleAnalytics: true
   homeInfoParams:
     Title: "Welcome to MillePhilosoph"
     Content: >-
