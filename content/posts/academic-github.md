@@ -1,5 +1,6 @@
 ---
 title: "Building Academic GitHub"
+pinned: true
 date: 2022-09-02
 ---
 

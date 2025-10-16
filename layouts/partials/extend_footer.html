@@ -1,0 +1,16 @@
+<script>
+  (function () {
+    const header = document.querySelector('.header');
+    if (!header) {
+      return;
+    }
+
+    const toggleScrolledState = () => {
+      const scrolled = window.scrollY > 16;
+      header.classList.toggle('header--scrolled', scrolled);
+    };
+
+    toggleScrolledState();
+    window.addEventListener('scroll', toggleScrolledState, { passive: true });
+  })();
+</script>

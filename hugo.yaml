@@ -24,7 +24,7 @@ params:
     Title: "Welcome to MillePhilosoph"
     Content: >-
       I'm a Scientometrician studying systems of science, especially peer review and preprints.
-      keywords: ``` Research on Research | Preprints | Science Policy```
+      keywords: <a href="/tags/research-on-research/">Research on Research</a> | Preprints | Science Policy
   socialIcons:
     - name: github
       url: https://github.com/psmuler
@@ -33,4 +33,4 @@ params:
     - name: orcid
       url: https://orcid.org/0009-0009-6492-0985
     - name: zenodo
-      url: https://zenodo.org/communities/millephilosoph
+      url: https://zenodo.org/communities/scisci/

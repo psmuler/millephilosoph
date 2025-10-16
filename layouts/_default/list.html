@@ -1,0 +1,226 @@
+{{- define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- if .IsHome }}
+{{- $filtered := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $filtered = where $filtered "Params.hiddenInHomeList" "!=" "true" }}
+{{- $pinned := sort (where $filtered "Params.pinned" true) "Date" "desc" }}
+{{- $others := sort (where $filtered "Params.pinned" "!=" true) "Date" "desc" }}
+{{- $rest := slice }}
+{{- if gt (len $others) 2 }}
+{{- $rest = after 2 $others }}
+{{- end }}
+{{- $paginator := .Paginate $rest }}
+
+{{- if and site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{- if eq $paginator.PageNumber 1 }}
+{{- $userPreferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+{{- $scratch := newScratch }}
+{{- $scratch.Set "firstRendered" false }}
+<div id="post-list">
+  {{- range $pinned }}
+  {{- $class := "post-entry pinned-entry" }}
+  {{- if and (not $userPreferred) (not ($scratch.Get "firstRendered")) }}
+  {{- $class = "first-entry pinned-entry" }}
+  {{- end }}
+  {{- partial "post_entry.html" (dict "page" . "class" $class) }}
+  {{- $scratch.Set "firstRendered" true }}
+  {{- end }}
+
+  {{- range $index, $page := (first 2 $others) }}
+  {{- $class := "post-entry" }}
+  {{- if and (not $userPreferred) (not ($scratch.Get "firstRendered")) }}
+  {{- $class = "first-entry" }}
+  {{- end }}
+  {{- partial "post_entry.html" (dict "page" $page "class" $class) }}
+  {{- $scratch.Set "firstRendered" true }}
+  {{- end }}
+</div>
+
+{{- if gt (len $rest) 0 }}
+<template id="infinite-content-page-1">
+  {{- range $paginator.Pages }}
+  {{- partial "post_entry.html" (dict "page" . "class" "post-entry") }}
+  {{- end }}
+</template>
+<div id="infinite-scroll-trigger" class="infinite-scroll-trigger" data-next="{{ if $paginator.HasNext }}{{ $paginator.Next.URL | relURL }}{{ end }}"></div>
+<noscript>
+  <p>More posts are available on the <a href="{{ "posts/" | relURL }}">Posts</a> page.</p>
+</noscript>
+<script>
+  (function () {
+    const container = document.querySelector('#post-list');
+    const template = document.querySelector('#infinite-content-page-1');
+    const trigger = document.querySelector('#infinite-scroll-trigger');
+    if (!container || !trigger) {
+      return;
+    }
+
+    const supportsInfiniteScroll = 'IntersectionObserver' in window && 'fetch' in window && 'DOMParser' in window;
+
+    if (!supportsInfiniteScroll) {
+      if (template) {
+        container.append(template.content.cloneNode(true));
+      }
+      trigger.remove();
+      return;
+    }
+
+    let firstChunkAppended = !template;
+    let loading = false;
+
+    const observer = new IntersectionObserver(async (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting || loading) {
+          continue;
+        }
+        loading = true;
+
+        if (template && !firstChunkAppended) {
+          container.append(template.content.cloneNode(true));
+          firstChunkAppended = true;
+          loading = false;
+          if (!trigger.dataset.next) {
+            observer.unobserve(trigger);
+            trigger.remove();
+          }
+          continue;
+        }
+
+        const nextUrl = trigger.dataset.next;
+        if (!nextUrl) {
+          observer.unobserve(trigger);
+          trigger.remove();
+          loading = false;
+          return;
+        }
+
+        try {
+          const response = await fetch(nextUrl);
+          if (!response.ok) {
+            throw new Error('Failed to fetch next posts');
+          }
+          const text = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'text/html');
+          const newContainer = doc.querySelector('#post-list');
+          if (newContainer) {
+            Array.from(newContainer.children).forEach((node) => container.append(node));
+          }
+          const newTrigger = doc.querySelector('#infinite-scroll-trigger');
+          if (newTrigger && newTrigger.dataset.next) {
+            trigger.dataset.next = newTrigger.dataset.next;
+          } else {
+            trigger.dataset.next = '';
+            observer.unobserve(trigger);
+            trigger.remove();
+          }
+        } catch (error) {
+          console.error(error);
+          observer.unobserve(trigger);
+          trigger.remove();
+        } finally {
+          loading = false;
+        }
+      }
+    }, { rootMargin: '200px' });
+
+    observer.observe(trigger);
+  })();
+</script>
+{{- end }}
+
+{{- else }}
+<div id="post-list">
+  {{- range $paginator.Pages }}
+  {{- partial "post_entry.html" (dict "page" . "class" "post-entry") }}
+  {{- end }}
+</div>
+{{- if $paginator.HasNext }}
+<div id="infinite-scroll-trigger" class="infinite-scroll-trigger" data-next="{{ $paginator.Next.URL | relURL }}"></div>
+{{- end }}
+{{- end }}
+
+{{- else }}
+{{- $pages := union .RegularPages .Sections }}
+{{- $paginator := .Paginate $pages }}
+{{- $term := .Data.Term }}
+
+<div id="post-list">
+  {{- range $paginator.Pages }}
+  {{- $class := "post-entry" }}
+  {{- if $term }}
+  {{- $class = "post-entry tag-entry" }}
+  {{- end }}
+  {{- partial "post_entry.html" (dict "page" . "class" $class) }}
+  {{- end }}
+</div>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}
+
+{{- end }}{{/* end profileMode */}}
+
+{{- end }}{{- /* end main */ -}}

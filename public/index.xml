@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Millephilosoph</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Millephilosoph</description>
+    <generator>Hugo -- 0.151.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Audit to Dialogue: Research Evaluation&#39;s Radical Turn</title>
+      <link>http://localhost:1313/posts/research_evaluation_reform/</link>
+      <pubDate>Sun, 12 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/research_evaluation_reform/</guid>
+      <description>&lt;p&gt;What do research crowdfunding, citizen science, and blockchain technologies have in common? They represent a fundamental shift away from centralized authority toward distributed decision-making. This same shift is now reaching the heart of academic governance: how we evaluate research.&lt;/p&gt;
+&lt;p&gt;I attended a symposium at Kyoto University on their new research evaluation framework, COMON. As an outsider—a researcher studying peer review systems—I witnessed something that goes far beyond the &amp;ldquo;responsible metrics&amp;rdquo; discourse of DORA or the collaborative spirit of CoARA. This is not another call for better measurement. It is a restructuring of institutional relationships, built on recognition that universities must help research communities create entirely new resources rather than compete for a fixed pie.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[Contributed Talk] Incentivised Open Participated Peer Review without Rewarding</title>
+      <link>http://localhost:1313/posts/incentivised-open-peer-review/</link>
+      <pubDate>Mon, 02 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/incentivised-open-peer-review/</guid>
+      <description>&lt;p&gt;By defining “push” in academic citation, learning from open-source software (OSS) development, we demonstrate citation metrics can incentivise reviewer as repository owners, under open participatory peer review. Potential drawbacks and countermeasures are also discussed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[Contributed Talk] Scientists Have an Inherent Prioritized Queue in Selecting Collaborations</title>
+      <link>http://localhost:1313/posts/icssi-2024/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/icssi-2024/</guid>
+      <description>&lt;p&gt;title: &amp;ldquo;Scientists Have an Inherent Prioritized Queue in Selecting Collaborations&amp;rdquo;
+excerpt: The paper analyzes the temporal dynamics of co-authorship in scientific publications, finding a fat-tailed interval distribution between recurring collaborations, which can be explained by a proposed priority selection model simulating multi-agent team dynamics based on co-authorship willingness. The findings suggest non-Poisson activity patterns in scientific collaborations.&lt;/p&gt;
+&lt;p&gt;venue: &amp;lsquo;ICSSI&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;url: &lt;a href=&#34;https://icssi2024.org/&#34;&gt;https://icssi2024.org/&lt;/a&gt; (the website is no longer available)&lt;/p&gt;
+&lt;p&gt;paperurl: &amp;lsquo;&lt;a href=&#34;http://academicpages.github.io/files/paper3.pdf&#39;&#34;&gt;http://academicpages.github.io/files/paper3.pdf&#39;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;type: &amp;lsquo;Contributed Talk&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Application of OSS Pull Requests to Academic Citation and Incentivise Public Participation Peer Review</title>
+      <link>http://localhost:1313/posts/oss-peer-review/</link>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/oss-peer-review/</guid>
+      <description>&lt;p&gt;By defining “push” in academic citation, learning from open-source software (OSS) development, we demonstrate citation metrics can incentivise reviewer as repository owners, under open participatory peer review. Potential drawbacks and countermeasures are also discussed.&lt;/p&gt;
+&lt;p&gt;venue: &amp;lsquo;ScisciConference&amp;rsquo;
+paperurl: &amp;lsquo;&lt;a href=&#34;https://sciscijp.github.io/scisciconfJP2024/program/&#39;&#34;&gt;https://sciscijp.github.io/scisciconfJP2024/program/&#39;&lt;/a&gt;
+type: &amp;lsquo;Poster Presentation&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Science of Science Tutorial</title>
+      <link>http://localhost:1313/posts/science-of-science-tutorial/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/science-of-science-tutorial/</guid>
+      <description>&lt;p&gt;I have contributed to ScisciConf. as a chief coder and superviser of scisci-handson. Codes are consists of 1. Data structure of OpenAlex, 2. Clustering and  visualization of disciplines, 3. Research evaluation by Wu-disruptiveness index, 4. Researcher evaluation by h-index.&lt;/p&gt;
+&lt;p&gt;venue: &amp;lsquo;ScisciConference&amp;rsquo;
+paperurl: &amp;lsquo;&lt;a href=&#34;https://github.com/ScisciJP/scisciJP2024_tutorial&#39;&#34;&gt;https://github.com/ScisciJP/scisciJP2024_tutorial&#39;&lt;/a&gt;
+type: &amp;lsquo;Lecture&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;Science of Science Tutorial&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bento-kai: Making Better Science and Academic Ecosystem</title>
+      <link>http://localhost:1313/posts/bentokai-2023aug/</link>
+      <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bentokai-2023aug/</guid>
+      <description>&lt;p&gt;You can see details &lt;a href=&#34;https://metascience.peatix.com/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Build a better ecosystem of science and academia, together. We are inviting you to the &amp;quot;Bento-kai,&amp;quot; a lunchtime study group: As we aim to innovate further and enhance research capabilities, we face many daily challenges regarding the mechanisms of science and academia. To address these, efforts have begun actively across industry, government, and academia to form communities, design policies and systems, and develop services.   However, given the complexity of the challenges we face, you may experience difficulties and frustrations in your activities. We define endeavors that tackle challenges in science and academia as &amp;quot;Metascience,&amp;quot; and with the aim of sharing practical knowledge surrounding Metascience and building an organic space for connections among participants, we have launched &amp;quot;Bento-kai,&amp;quot; a &amp;quot;brown-bag&amp;quot; style study group.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[Contributed Talk] The Age of Anticipation and the Better Way to Share Science</title>
+      <link>http://localhost:1313/posts/desci-2023/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/desci-2023/</guid>
+      <description>&lt;p&gt;venue: &amp;lsquo;DeSciTokyo Conference&amp;rsquo;
+url: &amp;lsquo;&lt;a href=&#34;https://desci-tokyo.jp/&#39;&#34;&gt;https://desci-tokyo.jp/&#39;&lt;/a&gt;
+type: &amp;lsquo;Contributed Talk&amp;rsquo;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Academic GitHub</title>
+      <link>http://localhost:1313/posts/academic-github/</link>
+      <pubDate>Fri, 02 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/academic-github/</guid>
+      <description>&lt;p&gt;Science is everywhere. From choosing the correct shampoo for your hair, to finding a single equation for whole universe.
+So understanding the mechanism behind the science is critical. This is where the &amp;ldquo;science of science&amp;rdquo; comes in. The discipline must aim to altering every obsolete mechanism of producing human (include other intelligent agents) knowledge.
+It&amp;rsquo;s like you are a factory owner who replaces an old manufacturing machine with a brand new one.
+It now ceases less frequent, works more efficiently, and understand your need better. You can now produce more with less.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

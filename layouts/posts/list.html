@@ -1,0 +1,326 @@
+{{- define "main" }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $jsonFormat := .OutputFormats.Get "JSON" -}}
+<section class="post-search" role="search" aria-label="Search posts">
+  <div class="post-search__sticky" id="post-search-anchor">
+    <label class="visually-hidden" for="post-search-input">Search posts</label>
+    <div class="post-search__surface">
+      <svg class="post-search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+      </svg>
+      <input id="post-search-input" class="post-search__input" type="search"
+        placeholder="Search titles, keywords, or summaries" autocomplete="off" spellcheck="false">
+      <button id="post-search-clear" class="post-search__clear" type="button" aria-label="Clear search" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <p id="post-search-status" class="post-search__status" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="search-results" class="search-results" hidden>
+  <div id="search-results-list" class="search-results__list"></div>
+  <p id="search-results-empty" class="search-results__empty" hidden>No posts match your query yet.</p>
+</section>
+
+{{- $pages := sort .RegularPages "Date" "desc" }}
+{{- $paginator := .Paginate $pages }}
+
+<div id="post-list">
+  {{- $userPreferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+  {{- $scratch := newScratch }}
+  {{- $scratch.Set "firstRendered" false }}
+  {{- range $index, $page := $paginator.Pages }}
+  {{- $class := "post-entry" }}
+  {{- if and (not $userPreferred) (not ($scratch.Get "firstRendered")) }}
+  {{- $class = "first-entry" }}
+  {{- end }}
+  {{- partial "post_entry.html" (dict "page" $page "class" $class) }}
+  {{- $scratch.Set "firstRendered" true }}
+  {{- end }}
+</div>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- if $jsonFormat }}
+<link rel="preload" as="fetch" href="{{ $jsonFormat.RelPermalink }}" type="application/json" crossorigin="anonymous">
+<script>
+  window.__POSTS_INDEX_URL__ = '{{ $jsonFormat.RelPermalink }}';
+</script>
+{{- end }}
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+<script>
+  (function () {
+    const searchInput = document.querySelector('#post-search-input');
+    const clearButton = document.querySelector('#post-search-clear');
+    const searchStatus = document.querySelector('#post-search-status');
+    const resultsSection = document.querySelector('#search-results');
+    const resultsList = document.querySelector('#search-results-list');
+    const emptyNotice = document.querySelector('#search-results-empty');
+    const defaultList = document.querySelector('#post-list');
+    const pagination = document.querySelector('.page-footer');
+    const indexUrl = window.__POSTS_INDEX_URL__;
+
+    if (!searchInput || !indexUrl) {
+      return;
+    }
+
+    const header = document.querySelector('.header');
+    const setStickyOffset = () => {
+      if (!header) {
+        return;
+      }
+      const height = header.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--post-search-sticky-offset', `${Math.round(height)}px`);
+    };
+    setStickyOffset();
+    window.addEventListener('resize', setStickyOffset, { passive: true });
+
+    let fuse;
+    let posts = [];
+    let loading = false;
+    let useFuse = typeof window.Fuse !== 'undefined';
+
+    const toggleDefaultList = (showDefault) => {
+      if (showDefault) {
+        resultsSection.hidden = true;
+        defaultList.hidden = false;
+        if (pagination) {
+          pagination.hidden = false;
+        }
+      } else {
+        resultsSection.hidden = false;
+        defaultList.hidden = true;
+        if (pagination) {
+          pagination.hidden = true;
+        }
+      }
+    };
+
+    const renderResults = (items) => {
+      resultsList.innerHTML = '';
+      if (!items.length) {
+        emptyNotice.hidden = false;
+        return;
+      }
+      emptyNotice.hidden = true;
+      const fragment = document.createDocumentFragment();
+      items.forEach((item) => {
+        const post = item.item || item;
+        const article = document.createElement('article');
+        article.className = 'post-entry search-entry';
+
+        const header = document.createElement('header');
+        header.className = 'entry-header';
+        const heading = document.createElement('h2');
+        heading.className = 'entry-hint-parent';
+        const titleLink = document.createElement('a');
+        titleLink.href = post.permalink || post.url;
+        titleLink.textContent = post.title;
+        heading.appendChild(titleLink);
+        header.appendChild(heading);
+        article.appendChild(header);
+
+        if (post.summary) {
+          const summary = document.createElement('div');
+          summary.className = 'entry-content';
+          const p = document.createElement('p');
+          p.textContent = post.summary;
+          summary.appendChild(p);
+          article.appendChild(summary);
+        }
+
+        const meta = document.createElement('footer');
+        meta.className = 'entry-footer';
+        const metaText = document.createElement('span');
+        metaText.className = 'post-meta';
+        metaText.textContent = post.date ? new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+        meta.appendChild(metaText);
+        article.appendChild(meta);
+
+        const linkOverlay = document.createElement('a');
+        linkOverlay.className = 'entry-link';
+        linkOverlay.href = post.permalink || post.url;
+        linkOverlay.setAttribute('aria-label', `post link to ${post.title}`);
+        article.appendChild(linkOverlay);
+
+        fragment.appendChild(article);
+      });
+      resultsList.appendChild(fragment);
+    };
+
+    const loadIndex = async () => {
+      if (fuse || loading) {
+        return;
+      }
+      loading = true;
+      searchStatus.textContent = 'Loading search index…';
+      try {
+        const response = await fetch(indexUrl);
+        if (!response.ok) {
+          throw new Error('Failed to load search index');
+        }
+        posts = await response.json();
+        if (typeof window.Fuse !== 'undefined') {
+          const options = {
+            keys: [
+              { name: 'title', weight: 0.5 },
+              { name: 'summary', weight: 0.3 },
+              { name: 'content', weight: 0.1 },
+              { name: 'tags', weight: 0.1 }
+            ],
+            threshold: 0.35,
+            ignoreLocation: true,
+            minMatchCharLength: 2
+          };
+          fuse = new window.Fuse(posts, options);
+          useFuse = true;
+          searchStatus.textContent = '';
+        } else {
+          useFuse = false;
+        }
+      } catch (error) {
+        console.error(error);
+        searchStatus.textContent = 'Search is unavailable right now.';
+      } finally {
+        loading = false;
+      }
+    };
+
+    const fallbackSearch = (query) => {
+      const q = query.toLowerCase();
+      return posts.filter((post) => {
+        const haystack = [
+          post.title,
+          post.summary,
+          post.content,
+          Array.isArray(post.tags) ? post.tags.join(' ') : '',
+          Array.isArray(post.categories) ? post.categories.join(' ') : ''
+        ].join(' ').toLowerCase();
+        return haystack.includes(q);
+      }).slice(0, 50);
+    };
+
+    const updateClearVisibility = () => {
+      if (!clearButton) {
+        return;
+      }
+      clearButton.hidden = !searchInput.value;
+    };
+
+    const handleSearch = async () => {
+      const query = searchInput.value.trim();
+      if (!query) {
+        toggleDefaultList(true);
+        searchStatus.textContent = '';
+        updateClearVisibility();
+        return;
+      }
+
+      if (!posts.length) {
+        await loadIndex();
+      }
+      if (!posts.length) {
+        return;
+      }
+
+      const results = useFuse && fuse
+        ? fuse.search(query, { limit: 50 })
+        : fallbackSearch(query);
+      toggleDefaultList(false);
+      renderResults(results);
+
+      const count = Array.isArray(results) ? results.length : 0;
+      searchStatus.textContent = count ? `${count} result${count === 1 ? '' : 's'} found for “${query}”.` : `No matches for “${query}”.`;
+      updateClearVisibility();
+    };
+
+    const handleInput = () => {
+      updateClearVisibility();
+      handleSearch();
+    };
+
+    searchInput.addEventListener('focus', loadIndex, { once: true });
+    searchInput.addEventListener('input', handleInput);
+
+    if (clearButton) {
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        toggleDefaultList(true);
+        searchStatus.textContent = '';
+        updateClearVisibility();
+        searchInput.focus();
+      });
+    }
+
+    if (searchInput.value) {
+      handleSearch();
+    } else {
+      updateClearVisibility();
+    }
+  })();
+</script>
+
+{{- end }}{{- /* end main */ -}}
