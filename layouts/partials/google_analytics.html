@@ -1,1 +1,25 @@
-{{/* intentionally empty */}}
+{{- $scratch := newScratch -}}
+{{- with site.Params.analytics.google.measurementId -}}
+  {{- $scratch.Set "measurementId" . -}}
+{{- end -}}
+{{- if not ($scratch.Get "measurementId") -}}
+  {{- with site.GoogleAnalytics -}}
+    {{- $scratch.Set "measurementId" . -}}
+  {{- end -}}
+{{- end -}}
+{{- $scratch.Set "anonymize" true -}}
+{{- with site.Params.analytics.google.anonymizeIP -}}
+  {{- $scratch.Set "anonymize" . -}}
+{{- end -}}
+{{- with $scratch.Get "measurementId" }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ . }}', {
+    anonymize_ip: {{ if $scratch.Get "anonymize" }}true{{ else }}false{{ end }},
+    page_path: '{{ $.RelPermalink }}'
+  });
+</script>
+{{- end }}

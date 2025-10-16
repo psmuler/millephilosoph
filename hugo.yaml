@@ -19,7 +19,7 @@ menu:
       weight: 3
 
 params:
-  disableGoogleAnalytics: true
+  disableGoogleAnalytics: false
   homeInfoParams:
     Title: "Welcome to MillePhilosoph"
     Content: >-
@@ -34,3 +34,7 @@ params:
       url: https://orcid.org/0009-0009-6492-0985
     - name: zenodo
       url: https://zenodo.org/communities/scisci/
+  analytics:
+    google:
+      measurementId: "G-XG7LSRYRD8"
+      anonymizeIP: true
