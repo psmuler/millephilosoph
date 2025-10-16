@@ -1,2 +1,4 @@
 */drafts
 themes/*
+.env
+/service_account/

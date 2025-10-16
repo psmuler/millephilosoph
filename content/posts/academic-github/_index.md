@@ -17,10 +17,12 @@ Therefore designing the fitness landscape of knowledge is crucial.
 In the same way, science can cover and answer any of the questions we are facing. -->
 
 # Information quality control is essential for distributed science.
+![alt text](image-2.png)
 This is why I'm doing research on distributed knowledge productions and peer review innovations. Peer review is a selection process to determine which knowledge should be valued. We need a comprehensive understanding about what forms and updates the consensus within scientific communities.
 The main contribution of my research is "push citation", a reversed citation from prior work to newer, combined with a improvement proposals for the prior research.
 For more detail, visit "Works" page.
-
+![alt text](image.png)
+![alt text](image-1.png)
 <!-- Information Quality Control can learn more from Open Source Software Development. -->
 <!-- My research focus is on distributed knowledge contribution system. -->
 

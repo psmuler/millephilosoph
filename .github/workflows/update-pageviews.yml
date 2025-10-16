@@ -1,0 +1,72 @@
+name: Update GA pageviews
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # 12:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --upgrade pip google-analytics-data PyYAML
+
+      - name: Write service account credentials
+        env:
+          GA_SERVICE_ACCOUNT_JSON: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
+        run: |
+          python - <<'PY'
+import os
+from pathlib import Path
+cred = os.environ.get("GA_SERVICE_ACCOUNT_JSON")
+if not cred:
+    raise SystemExit("GA_SERVICE_ACCOUNT_JSON secret is not set")
+Path("ga-creds.json").write_text(cred, encoding="utf-8")
+PY
+
+      - name: Refresh pageview metrics
+        env:
+          GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
+        run: |
+          if [ -z "${GA_PROPERTY_ID}" ]; then
+            echo "GA_PROPERTY_ID secret is not set" >&2
+            exit 1
+          fi
+          python scripts/update_pageviews.py \
+            --property-id="${GA_PROPERTY_ID}" \
+            --credentials=ga-creds.json \
+            --start-date=2023-01-01 \
+            --end-date=today \
+            --verbose
+
+      - name: Clean up credentials
+        if: always()
+        run: rm -f ga-creds.json
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet data/analytics/pageviews.yaml; then
+            echo "No pageview changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/analytics/pageviews.yaml
+          git commit -m "chore: refresh GA pageviews"
+
+      - name: Push changes
+        run: git push

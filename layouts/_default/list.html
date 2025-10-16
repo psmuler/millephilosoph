@@ -42,7 +42,29 @@
 {{- $filtered := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $filtered = where $filtered "Params.hiddenInHomeList" "!=" "true" }}
 {{- $pinned := sort (where $filtered "Params.pinned" true) "Date" "desc" }}
-{{- $others := sort (where $filtered "Params.pinned" "!=" true) "Date" "desc" }}
+{{- $othersBase := where $filtered "Params.pinned" "!=" true }}
+{{- $analytics := site.Data.analytics.pageviews.pageviews | default dict }}
+{{- $othersData := slice }}
+{{- range (shuffle $othersBase) }}
+{{- $rel := .RelPermalink }}
+{{- $views := 0 }}
+{{- with $analytics }}
+  {{- with index . $rel }}
+    {{- $views = . -}}
+  {{- else }}
+    {{- $trimmed := strings.TrimSuffix "/" $rel -}}
+    {{- with index . $trimmed }}
+      {{- $views = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+{{- $othersData = $othersData | append (dict "page" . "views" $views) }}
+{{- end }}
+{{- $othersData = sort $othersData "views" "desc" }}
+{{- $others := slice }}
+{{- range $othersData }}
+{{- $others = $others | append .page }}
+{{- end }}
 {{- $rest := slice }}
 {{- if gt (len $others) 2 }}
 {{- $rest = after 2 $others }}
