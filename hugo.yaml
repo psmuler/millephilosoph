@@ -6,6 +6,11 @@ theme: ["PaperMod"]
 ignoreFiles: ["/content/drafts/"]
 publishDir: "public"
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 menu:
   main:
     - name: Home

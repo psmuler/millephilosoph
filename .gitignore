@@ -1,6 +1,20 @@
-*/drafts
-themes/*
+# 下書きディレクトリ（どの階層でも）
+drafts/
+
+# テーマ全体を無視（サブモジュールなら別処理）
+themes/
+
+# 環境ファイル
 .env
-/service_account/
-DS_Store
+
+# サービスアカウントの認証情報
+service_account/
+
+# macOSのメタファイル
+.DS_Store
+
+# VSCode設定
 .vscode/
+
+# Hugoのビルド成果物
+public/*

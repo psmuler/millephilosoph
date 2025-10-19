@@ -3,17 +3,18 @@ title: "DNA barcoding of Research Diversity"
 date: 2025-10-19
 ---
 
-## What if we could sequence a "research DNA"?
 Every university has its own research strength and norms — a unique mixture of ideas, vocabularies, and disciplinary codes. 
 Epistemic diversity is often celebrated as a hallmark of vibrant academic institutions, fostering innovation and cross-pollination of ideas.
 University administrators are increasingly interested in fostering interdisciplinary research, and identifying the measures that can cultivate, sustain, or restore the strength of research ecosystems.
 
 Many researchers have tried to quantify this diversity, but it’s a tricky problem. Most publishers use subject classification systems to tag research articles: WoS category and ASJC to name a few. However, these systems are coarse-grained and often inconsistent granularity across disciplines. Many discipline has its own coding — physics has PACS, astrophysics has AAS, biology and medical sciences have MeSH terms, economics has JEL. But there are many disciplines that lack such coding systems. Recent advances in interdisciplinary research make it even harder to classify research into discrete categories.
 
-But, you may have noticed that this problem shares the same structure as the one faced by the naturalists in the 18th century: we inaugrated a glorious, discrete classification of living organisms from species to kingdom, but how do we define the diversity of an environment? It was apparently an easy task. Go outside, circle a rope in a meadow, and count how many distinct species are there. If you want, you can also compensate the number by accounting for the closeness in the phylogenetic tree.
-More and more they know deeply about the process of evolution, they become uncertain whether sheer species count in your backyard of overabundant generalists could appear more diverse than those in a hydrothermal vent at the bottom of the ocean — or even a tropical rainforest.
+## What if we could sequence a "research DNA"?
 
-They solved this problem by sequencing the DNA of organisms in the environment, and analyzing the genetic diversity directly from the sequence data. If they came from Home Depot, you might find distinct yet narrowly distributed genotypes. That would paint a very different picture of biodiversity than if they had sampled a pristine forest.
+You may have noticed that this problem shares the same structure as the one faced by the naturalists in the 18th century: we inaugrated a glorious, discrete classification of living organisms from species to kingdom, but how do we define the diversity of an environment? It was apparently an easy task. Go outside, circle a rope in a meadow, and count how many distinct species are there. If you want, you can also compensate the number by accounting for the closeness in the phylogenetic tree.
+As their understanding of evolution deepened, naturalists began to doubt whether sheer species count in your backyard of overabundant generalists could appear more diverse than those in a hydrothermal vent at the bottom of the ocean — or even a tropical rainforest.
+
+They solved this problem by sequencing the DNA of organisms in the environment, and analyzing the genetic diversity directly from the sequence data. If the samples came from Home Depot, you might find distinct yet narrowly distributed genotypes. That would paint a very different picture of biodiversity than if you had them in a pristine forest.
 
 ## A Thought Experiment: Compressing Research Output
 Imagine that the university is a living environment where its research output inhabit. Researchers produce knowledge by interacting with each other, sharing ideas, and building on past work. This ecosystem shapes the research culture and diversity of the institution. Of course not all departments are communicating, but they share the same resource pool: funding, administration, physical space, and institutional policies.
@@ -69,13 +70,13 @@ Next steps will involve comparing this (approximate) Kolmogorov complexity of te
 
 Below is an interactive plot showing the incompressibility of research across global universities. Feel free to explore how different institutions position themselves across the landscape - assuming it loads properly as my blog sometimes decides to crash my scripts. I would be happy to hear your thoughts on LinkedIn!
 
-{{< rawhtml >}}
-<iframe src="./diversity_scatter.html"
-        width="100%" height="600"
-        style="border:none;"></iframe>
-{{< /rawhtml >}}
-
-⸻
+<div style="width: 120%; overflow: visible;">
+  <iframe
+    src="/diversity_scatter.html"
+    style="width: 100%; min-height: 800px; border: none; overflow: visible;"
+    scrolling="no"
+  ></iframe>
+</div>
 
 References
 	•	Li, M. & Vitányi, P. (2008). An Introduction to Kolmogorov Complexity and Its Applications. Springer.
