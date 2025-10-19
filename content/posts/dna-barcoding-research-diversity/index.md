@@ -79,16 +79,16 @@ Below is an interactive plot showing the incompressibility of research across gl
 </div>
 
 References
-	•	Li, M. & Vitányi, P. (2008). An Introduction to Kolmogorov Complexity and Its Applications. Springer.
-	•	Faith, D. (1992). Conservation evaluation and phylogenetic diversity. Biological Conservation, 61(1), 1–10.
-	•	Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell System Technical Journal, 27(3), 379–423.
-	•	Rao, C. R. (1982). Diversity and dissimilarity coefficients: A unified approach. Theoretical Population Biology, 21(1), 24–43.
-	•	Stirling, A. (2007). A general framework for analysing diversity in science, technology and society. Journal of the Royal Society Interface, 4(15), 707–719.
+- Li, M. & Vitányi, P. (2008). An Introduction to Kolmogorov Complexity and Its Applications. Springer.
+- Faith, D. (1992). Conservation evaluation and phylogenetic diversity. Biological Conservation, 61(1), 1–10.
+- Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell System Technical Journal, 27(3), 379–423.
+- Rao, C. R. (1982). Diversity and dissimilarity coefficients: A unified approach. Theoretical Population Biology, 21(1), 24–43.
+- Stirling, A. (2007). A general framework for analysing diversity in science, technology and society. Journal of the Royal Society Interface, 4(15), 707–719.
 
 Methodology and Data Availability
 The data used in this analysis were obtained from the OpenAlex snapshot taken at April 2025. Abstracts those are not in English or contain less than 50 characters are omitted. At most one institution is assigned to each article, inferred from the first institutions of the first author. Institutions with fewer than 200 papers were excluded to ensure statistical robustness. The incompressibility calculations were performed using Python's gzip library on tokenized abstracts.
 
 Cite this work as:
-Miura, C. (2025). DNA Barcoding of Research Diversity. MillePhilosoph. https://doi.org/10.5281/osf.1234567
+Miura, C. (2025). DNA Barcoding of Research Diversity. MillePhilosoph. https://doi.org/10.6084/m9.figshare.30393655
 
 * The raw incompressibility of this post is approximately 0.99, which is disproportionately high given the quality of rushed writing on the Sunday morning. This may be due to gzip overhead.
