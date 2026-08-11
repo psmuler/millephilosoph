@@ -3,6 +3,9 @@ languageCode: en-us
 title: Millephilosoph
 theme: ["PaperMod"]
 
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+
 ignoreFiles: ["/content/drafts/"]
 publishDir: "public"
 
@@ -11,25 +14,51 @@ markup:
     renderer:
       unsafe: true
 
-menu:
-  main:
-    - name: Home
-      url: /
-      weight: 1
-    - name: Posts
-      url: /posts/
-      weight: 2
-    - name: CV
-      url: /cv/
-      weight: 3
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    params:
+      homeInfoParams:
+        Title: "Welcome to MillePhilosoph"
+        Content: >-
+          I'm a Scientometrician studying systems of science, especially peer review and preprints.
+          keywords: <a href="/tags/research-on-research/">Research on Research</a> | Preprints | Science Policy
+    menus:
+      main:
+        - name: Home
+          url: /
+          weight: 1
+        - name: Posts
+          url: /posts/
+          weight: 2
+        - name: CV
+          url: /cv/
+          weight: 3
+  ja:
+    languageName: "日本語"
+    weight: 2
+    params:
+      homeInfoParams:
+        Title: "MillePhilosophへようこそ"
+        Content: >-
+          科学計量学（サイエントメトリクス）の研究者です。
+          査読・プレプリント・科学政策を中心に、科学システムそのものを研究しています。
+          キーワード: 研究の科学 | プレプリント | 科学政策
+    menus:
+      main:
+        - name: ホーム
+          url: /
+          weight: 1
+        - name: 記事
+          url: /posts/
+          weight: 2
+        - name: CV
+          url: /cv/
+          weight: 3
 
 params:
   disableGoogleAnalytics: false
-  homeInfoParams:
-    Title: "Welcome to MillePhilosoph"
-    Content: >-
-      I'm a Scientometrician studying systems of science, especially peer review and preprints.
-      keywords: <a href="/tags/research-on-research/">Research on Research</a> | Preprints | Science Policy
   socialIcons:
     - name: github
       url: https://github.com/psmuler
