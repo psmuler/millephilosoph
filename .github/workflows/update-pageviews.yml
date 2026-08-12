@@ -29,14 +29,11 @@ jobs:
         env:
           GA_SERVICE_ACCOUNT_JSON: ${{ secrets.GA_SERVICE_ACCOUNT_JSON }}
         run: |
-          python - <<'PY'
-import os
-from pathlib import Path
-cred = os.environ.get("GA_SERVICE_ACCOUNT_JSON")
-if not cred:
-    raise SystemExit("GA_SERVICE_ACCOUNT_JSON secret is not set")
-Path("ga-creds.json").write_text(cred, encoding="utf-8")
-PY
+          if [ -z "${GA_SERVICE_ACCOUNT_JSON}" ]; then
+            echo "GA_SERVICE_ACCOUNT_JSON secret is not set" >&2
+            exit 1
+          fi
+          printf '%s' "${GA_SERVICE_ACCOUNT_JSON}" > ga-creds.json
 
       - name: Refresh pageview metrics
         env:
