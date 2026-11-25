@@ -16,15 +16,22 @@ title: "Curriculum Vitae - Chiaki Miura"
   </div>
 </div>
 
-Chiaki Miura is a PhD candidate at the University of Tokyo pursuing a mechanistic understanding of how science itself works—peer review, citation dynamics and null models, and how science comes to understand the world. She has secured multiple competitive research grants, and serves as a core organizer of Japan's flagship Science of Science community, where she leads its hands-on tutorial program. She is firmly embedded in the international community of the field—trained at CWTS Leiden, the field's leading European center for scientometrics; sought out as a host by three visiting researchers from Germany; and an invited speaker at international venues, most recently a workshop at Kobe University. This work is consistently translated for practitioners, including joint research with university research administrators (URAs) presented at the Japan's largest URA conference.
+Chiaki Miura is a PhD candidate at the University of Tokyo pursuing a mechanistic understanding of works through *curation*—the selection and rearrangement of existing knowledge into something new. This includes:
+- empirical study of peer review through comparing journals and preprint servers [Preprints Without Curation Are Increasingly Cited by Journals]
+- building tractable null models for citation dynamics, such as knowledge hot spot, preferential attachment, aging and sleeping beauty [Neutral Theory of Human Knowledge Network Evolution]
+- formalize a scientist as a time-bounded probabilistic model, to analyze how problems are solved
 
-# Research Interest
-* Peer Review, Research Evaluation, and Science Policy
-* Learning Dynamics, Mechanistic Interpretability, and Training Data Attribution
-* Science Systems Studies
+She has secured multiple competitive research grants, and serves as a core organizer of Japan's flagship Science of Science community, where she leads its hands-on program. She is firmly embedded in the international community of the field—trained at CWTS Leiden, the field's leading European center for scientometrics; sought out as a host by three visiting researchers from Germany; and an invited speaker at international venues, most recently a workshop at Kobe University. This work is consistently translated for practitioners, including joint research with university research administrators (URAs) presented at the Japan's largest URA conference.
+
+# Background
+* Machine Learning
+* Network Science and Complex Systems
+* Scientometrics and Science of Science
 
 # Education
+* Predoctoral Fellow (visiting), Center for Science of Science and Innovation (CSSI), Kellogg School of Management, Northwestern University (2026.10–2026.12)
 * Technology Management and Innovations, Graduate School of Engineering, The University of Tokyo, PhD student (2023-)
+* CWTS Scientometrics Summer School, Centre for Science and Technology Studies (CWTS), Leiden University, participant (2024)
 * Graduate School of Engineering, The University of Tokyo, Master of Engineering (2021-2023)
 * Department of Engineering, The University of Tokyo (2017-2021)
 
@@ -33,7 +40,7 @@ Chiaki Miura is a PhD candidate at the University of Tokyo pursuing a mechanisti
 * National Institute of Advanced Industrial Science and Technology [Kakusei Project](https://kakusei.aist.go.jp/r8/#saitaku) (2026.07-)
 
 # Publications
-* **C. Miura**, I. Sakata, "Preprints Without Curation Are Increasingly Cited by Journals", [Preprint](https://arxiv.org/abs/2607.25220) (2026)
+* **C. Miura**, I. Sakata, "Preprints Without Curation Are Increasingly Cited by Journals", *Quantitative Science Studies* (accepted, 2026). [Preprint](https://arxiv.org/abs/2607.25220)
 * **C. Miura**, I. Sakata, "From Rapid Release to Reinforced Elite: Citation Inequality is Stronger in Preprint than Journals", 
 [Preprint](https://arxiv.org/abs/2506.07547)
 * **C. Miura**, I. Sakata, "Difference between Preprints and Journal Systems", (2025). [Conference Proceedings](https://issi2025.iiap.sci.am/wp-content/uploads/2025/07/15%E2%80%A4-difference_preprints_journalsdocx_285.pdf)
@@ -57,6 +64,8 @@ Chiaki Miura is a PhD candidate at the University of Tokyo pursuing a mechanisti
 * Tutorial Organizer, [Science of Science Conference Japan](https://sciscijp.github.io/scisciconfJP2024/venue/), (2024).
 
 # Invited Talks
+* **C. Miura**, "Neutral Theory of Human Knowledge Network Evolution", Team Research Seminar, Center for Science of Science and Innovation, Kellogg School of Management, Northwestern University, (2026)
+* **C. Miura**, "Evolution of Scientific Network and the Complexity of Search", Lab Meeting, Acuña Lab, University of Colorado Boulder, (2026)
 * **Chiaki Miura**, Preprints, Inequality, and Trust: Designing Scientific Communication for Humans and AI, [International Workshop on Science, Innovation, and the Knowledge Economy](https://ccss.kobe-u.ac.jp/event/seminar_all/2026/202605201400.html) (2026) 
 * **C. Miura**, "The State of the Art in Research Assessment with AI", University of Tokyo Research Administrator Study Group, (2025)
 * **C. Miura**, "Citation Inequality is Stronger in Preprint than Journals", AI Science Night, (2025)

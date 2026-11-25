@@ -21,14 +21,16 @@
 * 科学システム論
 
 # 学歴
+* ノースウェスタン大学 Kellogg School of Management, Center for Science of Science and Innovation（CSSI）Predoctoral Fellow（客員, 2026年10月〜12月）
 * 東京大学大学院工学系研究科 技術経営戦略学専攻 博士課程（2023年〜）
+* ライデン大学 科学技術研究センター（CWTS）Scientometrics Summer School 参加（2024年）
 
 # 研究資金
 * 科学技術振興機構（JST）戦略的基礎研究推進事業 ACT-X 採択（2024年〜）課題番号：[JPMJAX24CP](https://projectdb.jst.go.jp/grant/JST-PROJECT-24030411/)
 * 産業技術総合研究所 [覚醒プロジェクト](https://kakusei.aist.go.jp/r8/#saitaku)（2026年7月〜）
 
 # 論文・発表
-* **C. Miura**, I. Sakata, "Preprints Without Curation Are Increasingly Cited by Journals", [Preprint](https://arxiv.org/abs/2607.25220) (2026)
+* **C. Miura**, I. Sakata, "Preprints Without Curation Are Increasingly Cited by Journals", *Quantitative Science Studies* (accepted, 2026). [Preprint](https://arxiv.org/abs/2607.25220)
 * **C. Miura**, I. Sakata, "From Rapid Release to Reinforced Elite: Citation Inequality is Stronger in Preprint than Journals",
 [Preprint](https://arxiv.org/abs/2506.07547)
 * **C. Miura**, I. Sakata, "Difference between Preprints and Journal Systems", (2025). [Conference Proceedings](https://issi2025.iiap.sci.am/wp-content/uploads/2025/07/15%E2%80%A4-difference_preprints_journalsdocx_285.pdf)
@@ -52,6 +54,8 @@
 * チュートリアル企画, [第1回Science of Science Conference Japan](https://sciscijp.github.io/scisciconfJP2024/venue/) (2024年)
 
 # 招待講演
+* **C. Miura**, "Neutral Theory of Human Knowledge Network Evolution", Team Research Seminar, Center for Science of Science and Innovation, ノースウェスタン大学 Kellogg School of Management (2026年)
+* **C. Miura**, "Evolution of Scientific Network and the Complexity of Search", Acuña研究室 ラボミーティング, コロラド大学ボルダー校 (2026年)
 * **三浦千哲**, Preprints, Inequality, and Trust: Designing Scientific Communication for Humans and AI, [International Workshop on Science, Innovation, and the Knowledge Economy](https://ccss.kobe-u.ac.jp/event/seminar_all/2026/202605201400.html) (2026年)
 * **C. Miura**, "AIが提供する学術評価の現在地", UTRA勉強会 (2025年)
 * **C. Miura**, "Citation Inequality is Stronger in Preprint than Journals", AI Science Night (2025年)
