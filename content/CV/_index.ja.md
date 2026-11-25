@@ -21,7 +21,7 @@
 * 科学システム論
 
 # 学歴
-* ノースウェスタン大学 Kellogg School of Management, Center for Science of Science and Innovation（CSSI）Predoctoral Fellow（客員, 2026年10月〜12月）
+* ノースウェスタン大学 Kellogg School of Management, Center for Science of Science and Innovation（CSSI）Predoctoral Fellow（客員, 2026年10月〜）
 * 東京大学大学院工学系研究科 技術経営戦略学専攻 博士課程（2023年〜）
 * ライデン大学 科学技術研究センター（CWTS）Scientometrics Summer School 参加（2024年）
 

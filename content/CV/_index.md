@@ -29,7 +29,7 @@ She has secured multiple competitive research grants, and serves as a core organ
 * Scientometrics and Science of Science
 
 # Education
-* Predoctoral Fellow (visiting), Center for Science of Science and Innovation (CSSI), Kellogg School of Management, Northwestern University (2026.10–2026.12)
+* Predoctoral Fellow (visiting), Center for Science of Science and Innovation (CSSI), Kellogg School of Management, Northwestern University (2026.10–)
 * Technology Management and Innovations, Graduate School of Engineering, The University of Tokyo, PhD student (2023-)
 * CWTS Scientometrics Summer School, Centre for Science and Technology Studies (CWTS), Leiden University, participant (2024)
 * Graduate School of Engineering, The University of Tokyo, Master of Engineering (2021-2023)
