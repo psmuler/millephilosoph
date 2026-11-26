@@ -7,4 +7,4 @@ venue: 'DeSciTokyo Conference'
 url: 'https://desci-tokyo.jp/'
 type: 'Contributed Talk'
 
-*Details of my presentation at this conference will be added here — watch for it!*
+I spoke as founder of Giant in the evening "Research DX" session of DeSci.Tokyo Conference 2023 (16 April 2023, SmartNews office, Shibuya), followed by a panel on research DX.

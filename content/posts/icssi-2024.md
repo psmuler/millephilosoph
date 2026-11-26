@@ -14,4 +14,4 @@ paperurl: 'http://academicpages.github.io/files/paper3.pdf'
 
 type: 'Contributed Talk'
 
-*Details of my presentation at this conference will be added here — watch for it!*
+Oral talk with K. Asatani and I. Sakata in the main auditorium of the National Academy of Sciences, Washington, DC (1–4 July 2024): my first talk at an international science-of-science conference, to an audience of about 100.

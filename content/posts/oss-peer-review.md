@@ -9,4 +9,4 @@ venue: 'ScisciConference'
 paperurl: 'https://sciscijp.github.io/scisciconfJP2024/program/'
 type: 'Poster Presentation'
 
-*Details of my presentation at this conference will be added here — watch for it!*
+Presented with K. Asatani and I. Sakata at the first meeting of the Science of Science Kenkyukai in Japan (2024).

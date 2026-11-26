@@ -11,4 +11,4 @@ type: 'Lecture'
 
 Science of Science Tutorial
 
-*Details of my presentation at this conference will be added here — watch for it!*
+I ran the hands-on session at scisciconfJP2024 (17 March 2024), which drew about 60 participants, and repeated it at Bento-kai #04 on 17 August 2024.
