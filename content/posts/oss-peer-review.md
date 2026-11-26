@@ -8,3 +8,5 @@ By defining “push” in academic citation, learning from open-source software 
 venue: 'ScisciConference'
 paperurl: 'https://sciscijp.github.io/scisciconfJP2024/program/'
 type: 'Poster Presentation'
+
+*Details of my presentation at this conference will be added here — watch for it!*

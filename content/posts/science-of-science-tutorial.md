@@ -10,3 +10,5 @@ paperurl: 'https://github.com/ScisciJP/scisciJP2024_tutorial'
 type: 'Lecture'
 
 Science of Science Tutorial
+
+*Details of my presentation at this conference will be added here — watch for it!*

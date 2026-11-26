@@ -4,3 +4,5 @@ date: 2024-03-17
 ---
 
 ![d-idea](./medium_d-idea.png)
+
+*Details of my presentation at this conference will be added here — watch for it!*
