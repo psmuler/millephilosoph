@@ -1,5 +1,8 @@
 ---
 title: "Curriculum Vitae - Chiaki Miura"
+aliases:
+  - /about/
+  - /homepage/about/
 ---
 <div class="print-cv-header">
   <img src="/images/cv-photo.jpg" alt="Chiaki Miura" class="print-cv-photo">

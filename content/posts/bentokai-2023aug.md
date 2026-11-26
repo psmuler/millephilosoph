@@ -3,7 +3,7 @@ title: "Bento-kai: Making Better Science and Academic Ecosystem"
 date: 2023-08-20
 ---
 
-![alt text](medium_bento-kai.jpg)
+![alt text](/posts/asian-knowledge-production/medium_bento-kai.jpg)
 
 You can see details [here](https://metascience.peatix.com/)
 

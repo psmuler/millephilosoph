@@ -23,7 +23,7 @@ languages:
         Title: "Welcome to MillePhilosoph"
         Content: >-
           I'm a Scientometrician studying systems of science, especially peer review and preprints.
-          keywords: <a href="/tags/research-on-research/">Research on Research</a> | Preprints | Science Policy
+          keywords: <a href="/posts/">Research on Research</a> | Preprints | Science Policy
     menus:
       main:
         - name: Home

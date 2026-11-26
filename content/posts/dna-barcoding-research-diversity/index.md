@@ -1,6 +1,8 @@
 ---
 title: "DNA barcoding of Research Diversity"
 date: 2025-10-19
+aliases:
+  - /posts/dna-barcoding-research-diversity/dna-barcoding-research-diversity/
 ---
 
 Every university has its own research strength and norms — a unique mixture of ideas, vocabularies, and disciplinary codes. 

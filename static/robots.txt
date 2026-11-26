@@ -1,0 +1,28 @@
+# Allow legitimate search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block scanning bots and malicious crawlers
+User-agent: *
+Disallow: /
+
+# Allow home and posts
+Allow: /$
+Allow: /posts/
+Allow: /cv/
+Allow: /about/
+Allow: /tags/
+Allow: /ja/
+Allow: /en/
+
+# Crawl delay for respectful crawlers
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://millephilosoph.xyz/sitemap.xml

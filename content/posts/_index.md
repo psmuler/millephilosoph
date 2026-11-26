@@ -1,5 +1,8 @@
 ---
 title: "Posts"
+aliases:
+  - /archive/
+  - /homepage/archive/
 outputs:
   - HTML
   - JSON
